@@ -45,6 +45,10 @@ public class EventDao extends BaseDao{
             }
         });
     }
+    public void alterSequenceEvent(){
+        String sqlAlterSequence = "alter sequence subscriptions_id_seq restart with 1";
+        jdbcTemplate.update(sqlAlterSequence);
+    }
     public void deleteAll() {
         String sql = "delete from events";
         jdbcTemplate.update(sql);

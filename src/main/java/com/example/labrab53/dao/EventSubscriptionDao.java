@@ -30,7 +30,6 @@ public class EventSubscriptionDao extends BaseDao{
     public void saveAll(List<EventSubscription> eventSubscriptions) {
         String sql = "insert into subscriptions(eventId, email, registrationDateTime) " +
                 "values(?,?,?)";
-
         jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
@@ -44,6 +43,10 @@ public class EventSubscriptionDao extends BaseDao{
                 return eventSubscriptions.size();
             }
         });
+    }
+    public void AlertSequenceEventSubscribe(){
+        String sqlAlterSequence = "alter sequence events_id_seq restart with 1";
+        jdbcTemplate.update(sqlAlterSequence);
     }
     public void deleteAll() {
         String sql = "delete from subscriptions";

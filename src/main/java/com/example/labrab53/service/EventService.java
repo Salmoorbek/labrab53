@@ -22,7 +22,7 @@ public class EventService {
     }
     public EventDto findOne(int eventId) {
         var event = eventDao.getEventById(eventId)
-                .orElseThrow(() -> new ResourceNotFoundException("Can't find movie with the ID: " + eventId));
+                .orElseThrow(() -> new ResourceNotFoundException("Такой ID не существует: " + eventId));
         return EventDto.from(event);
     }
 

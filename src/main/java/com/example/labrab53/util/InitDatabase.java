@@ -26,8 +26,10 @@ public class InitDatabase {
             eventDao.createTable();
             eventSubscriptionDao.createTable();
 
-            eventDao.deleteAll();
             eventSubscriptionDao.deleteAll();
+            eventDao.deleteAll();
+            eventSubscriptionDao.AlertSequenceEventSubscribe();
+            eventDao.alterSequenceEvent();
 
             eventDao.saveAll(saveEvents());
             eventSubscriptionDao.saveAll(saveSubscriptions());
@@ -44,7 +46,6 @@ public class InitDatabase {
         List<EventSubscription> subscriptions = new ArrayList<>();
         subscriptions.add(new EventSubscription(1,2,"sasasa@mail.ru", LocalDateTime.of(LocalDate.of(2022,3,5), LocalTime.of(12,23))));
         subscriptions.add(new EventSubscription(2,1,"sasa@mail.ru", LocalDateTime.of(LocalDate.of(2023,3,5), LocalTime.of(12,23))));
-
         return subscriptions;
     }
 }
