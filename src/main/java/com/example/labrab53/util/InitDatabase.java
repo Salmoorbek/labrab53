@@ -25,8 +25,12 @@ public class InitDatabase {
         return (args) -> {
             eventDao.createTable();
             eventSubscriptionDao.createTable();
-//            eventDao.saveAll(saveEvents());
-//            eventSubscriptionDao.saveAll(saveSubscriptions());
+
+            eventDao.deleteAll();
+            eventSubscriptionDao.deleteAll();
+
+            eventDao.saveAll(saveEvents());
+            eventSubscriptionDao.saveAll(saveSubscriptions());
         };
     }
     public List<Event> saveEvents(){
@@ -39,6 +43,8 @@ public class InitDatabase {
     public List<EventSubscription> saveSubscriptions(){
         List<EventSubscription> subscriptions = new ArrayList<>();
         subscriptions.add(new EventSubscription(1,2,"sasasa@mail.ru", LocalDateTime.of(LocalDate.of(2022,3,5), LocalTime.of(12,23))));
+        subscriptions.add(new EventSubscription(2,1,"sasa@mail.ru", LocalDateTime.of(LocalDate.of(2023,3,5), LocalTime.of(12,23))));
+
         return subscriptions;
     }
 }
