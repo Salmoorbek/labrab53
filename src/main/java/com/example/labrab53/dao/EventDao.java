@@ -45,6 +45,10 @@ public class EventDao extends BaseDao{
             }
         });
     }
+    public void deleteAll() {
+        String sql = "delete from events";
+        jdbcTemplate.update(sql);
+    }
 
     public List<Event> getAllEvents() {
         String sql = "SELECT * FROM events";

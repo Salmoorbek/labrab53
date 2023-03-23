@@ -45,6 +45,10 @@ public class EventSubscriptionDao extends BaseDao{
             }
         });
     }
+    public void deleteAll() {
+        String sql = "delete from subscriptions";
+        jdbcTemplate.update(sql);
+    }
     public void save(EventSubscription eventSubscription) {
         String sql = "insert into subscriptions (eventId, email, registrationDateTime) " +
                 "values(?,?,?)";
@@ -60,9 +64,9 @@ public class EventSubscriptionDao extends BaseDao{
         String sql = "SELECT * FROM subscriptions";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(EventSubscription.class));
     }
-    public List<EventSubscription> getAllMyEvents(String email) {
+    public List<EventSubscriptionDto> getAllMyEvents(String email) {
         String sql = "SELECT * FROM subscriptions where email = ?";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(EventSubscription.class), email);
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(EventSubscriptionDto.class), email);
     }
 
     public void deleteSubscriptionEvent(int id, String email){
