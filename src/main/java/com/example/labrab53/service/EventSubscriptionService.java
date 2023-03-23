@@ -2,6 +2,7 @@ package com.example.labrab53.service;
 
 import com.example.labrab53.dao.EventDao;
 import com.example.labrab53.dao.EventSubscriptionDao;
+import com.example.labrab53.dto.EventSubscriptionDto;
 import com.example.labrab53.entity.EventSubscription;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +49,7 @@ public class EventSubscriptionService {
         }
         return message;
     }
-    public List<EventSubscription> getMySubscriptions(String email){
+    public List<EventSubscriptionDto> getMySubscriptions(String email){
         return eventSubscriptionDao.getAllMyEvents(email);
     }
 

@@ -1,6 +1,6 @@
 package com.example.labrab53.controller;
 
-import com.example.labrab53.entity.EventSubscription;
+import com.example.labrab53.dto.EventSubscriptionDto;
 import com.example.labrab53.service.EventSubscriptionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class EventSubscriptionController {
     }
 
     @GetMapping("/mySubscriptions/{email}")
-    public List<EventSubscription> getEmail(@PathVariable String email) {
+    public List<EventSubscriptionDto> getEmail(@PathVariable String email) {
         return eventSubscriptionService.getMySubscriptions(email);
     }
 
